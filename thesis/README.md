@@ -1,0 +1,1 @@
+Schriftliche Ausarbeitung (PDF)
