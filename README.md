@@ -53,7 +53,7 @@ Die Datenmodellierung folgt zunächst einem Entity-Relationship-Modell, auf dess
 ├── frontend/  # HTML/CSS/JS, Cytoscape.js-Visualisierung
 ├── ontology/  # Protégé-Dateien, ER-/Ontologie-Diagramme
 ├── poster/  # Poster (PNG/PDF)
-└── thesis/  # Schriftliche Ausarbeitung (PDF)
+├── thesis/  # Schriftliche Ausarbeitung (PDF)
 ```
 
 ## Setup
