@@ -47,13 +47,13 @@ Die Datenmodellierung folgt zunächst einem Entity-Relationship-Modell, auf dess
 ## Repository-Struktur
 
 ```
-├── thesis/  # Schriftliche Ausarbeitung (PDF)
-├── data/  # Rohdaten & aufbereitete Datensätze, DataDictionary.md
-├── ontology/  # Protégé-Dateien, ER-/Ontologie-Diagramme
 ├── backend/  # API-Funktionen, Cypher-Queries (Queries.md)
+├── data/  # Rohdaten & aufbereitete Datensätze, DataDictionary.md
+├── docs/  # Styleguide, Architektur-Dokumentation, Screenshots
 ├── frontend/  # HTML/CSS/JS, Cytoscape.js-Visualisierung
+├── ontology/  # Protégé-Dateien, ER-/Ontologie-Diagramme
 ├── poster/  # Poster (PNG/PDF)
-└── docs/  # Styleguide, Architektur-Dokumentation, Screenshots
+└── thesis/  # Schriftliche Ausarbeitung (PDF)
 ```
 
 ## Setup
