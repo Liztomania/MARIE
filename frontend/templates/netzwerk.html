@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>MARIE – Testansicht</title>
+</head>
+<body>
+  <h1>MARIE – Testansicht</h1>
+  <p>Beziehungen aus Neo4j ({{ beziehungen|length }}):</p>
+  <table border="1" cellpadding="6">
+    <tr><th>Von</th><th>Beziehung</th><th>Zu</th></tr>
+    {% for b in beziehungen %}
+    <tr><td>{{ b.von }}</td><td>{{ b.typ }}</td><td>{{ b.zu }}</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
