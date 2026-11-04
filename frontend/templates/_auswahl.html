@@ -1,0 +1,17 @@
+<form class="auswahl" action="{{ url_for('verbindungen') }}" method="get">
+  {% if mit_zurueck %}<a class="knopf knopf--rahmen" href="{{ url_for('start') }}">Zurück</a>{% endif %}
+  {% for feld, gewaehlt in [('person_a', person_a), ('person_b', person_b)] %}
+  <div>
+    <label for="{{ feld }}">{{ 'Erste Person' if loop.first else 'Zweite Person' }}</label>
+    <select id="{{ feld }}" name="{{ feld }}" required>
+      <option value="">Person wählen</option>
+      {% for p in personen %}
+      <option value="{{ p.name }}" {% if p.name == gewaehlt %}selected{% endif %}>{{ p.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% endfor %}
+  <div class="aktionen">
+    <button class="knopf" type="submit">{{ knopftext }}</button>
+  </div>
+</form>

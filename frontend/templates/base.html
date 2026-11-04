@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titel %}MARIE{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/marie.css') }}">
+</head>
+<body>
+  <a class="infoecke" href="https://www.ma-rie.eu/" title="Über MARIE">ⓘ</a>
+  {% block inhalt %}{% endblock %}
+</body>
+</html>

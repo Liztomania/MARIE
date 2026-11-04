@@ -1,7 +1,7 @@
-"""MARIE – minimale Flask-Anwendung (Durchstich Neo4j → Python → HTML)."""
+"""MARIE – Flask-Anwendung (Stufe 1: serverseitig gerendertes HTML, ohne JavaScript)."""
 from pathlib import Path
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from db import run_query
 
@@ -12,15 +12,31 @@ app = Flask(
     static_folder=str(FRONTEND / "static"),
 )
 
+# Testabfragen für die Grundstruktur; werden nach der Modellkorrektur ersetzt.
+PERSONEN = "MATCH (p:Testknoten) RETURN p.name AS name ORDER BY name"
+VERBINDUNGEN = """
+    MATCH (a:Testknoten {name: $person_a})-[r]-(b:Testknoten {name: $person_b})
+    RETURN startNode(r).name AS von, type(r) AS typ, endNode(r).name AS zu
+"""
+
 
 @app.route("/")
-def netzwerk():
-    # Testabfrage für den Durchstich; wird nach der Modellkorrektur ersetzt.
-    beziehungen = run_query("""
-        MATCH (a:Testknoten)-[r]->(b:Testknoten)
-        RETURN a.name AS von, type(r) AS typ, b.name AS zu
-    """)
-    return render_template("netzwerk.html", beziehungen=beziehungen)
+def start():
+    return render_template("start.html", personen=run_query(PERSONEN))
+
+
+@app.route("/verbindungen")
+def verbindungen():
+    person_a = request.args.get("person_a", "")
+    person_b = request.args.get("person_b", "")
+    beziehungen = run_query(VERBINDUNGEN, {"person_a": person_a, "person_b": person_b})
+    return render_template(
+        "verbindungen.html",
+        personen=run_query(PERSONEN),
+        person_a=person_a,
+        person_b=person_b,
+        beziehungen=beziehungen,
+    )
 
 
 if __name__ == "__main__":

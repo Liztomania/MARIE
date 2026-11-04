@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block inhalt %}
+<main class="start">
+  <div class="logo">
+    <span class="logo-wort">MARIE</span>
+    <span class="logo-unterzeile">Meeting Artists in Research<br>and Interdisciplinary Education</span>
+  </div>
+  {% with mit_zurueck=False, person_a='', person_b='', knopftext='Verbindungen suchen' %}
+    {% include "_auswahl.html" %}
+  {% endwith %}
+</main>
+{% endblock %}
