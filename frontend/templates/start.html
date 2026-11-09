@@ -2,10 +2,10 @@
 {% block inhalt %}
 <main class="start">
   <div class="logo">
-    <span class="logo-wort">MARIE</span>
-    <span class="logo-unterzeile">Meeting Artists in Research<br>and Interdisciplinary Education</span>
+    <img src="{{ url_for('static', filename='img/marie-logo.svg') }}" alt="MARIE – Meeting Artists in Research and Interdisciplinary Education">
   </div>
-  {% with mit_zurueck=False, person_a='', person_b='', knopftext='Verbindungen suchen' %}
+  {% if meldung %}<p class="meldung" role="alert">{{ meldung }}</p>{% endif %}
+  {% with mit_zurueck=False, knopftext='Verbindungen suchen' %}
     {% include "_auswahl.html" %}
   {% endwith %}
 </main>

@@ -3,7 +3,7 @@
   {% for feld, gewaehlt in [('person_a', person_a), ('person_b', person_b)] %}
   <div>
     <label for="{{ feld }}">{{ 'Erste Person' if loop.first else 'Zweite Person' }}</label>
-    <select id="{{ feld }}" name="{{ feld }}" required>
+    <select id="{{ feld }}" name="{{ feld }}">
       <option value="">Person wählen</option>
       {% for p in personen %}
       <option value="{{ p.name }}" {% if p.name == gewaehlt %}selected{% endif %}>{{ p.name }}</option>

@@ -3,8 +3,7 @@
 {% block inhalt %}
 <header class="kopf">
   <a class="logo logo--klein" href="{{ url_for('start') }}">
-    <span class="logo-wort">MARIE</span>
-    <span class="logo-unterzeile">Meeting Artists in Research<br>and Interdisciplinary Education</span>
+    <img src="{{ url_for('static', filename='img/marie-logo.svg') }}" alt="MARIE – Meeting Artists in Research and Interdisciplinary Education">
   </a>
   {% with mit_zurueck=True, knopftext='Verbindungen aktualisieren' %}
     {% include "_auswahl.html" %}

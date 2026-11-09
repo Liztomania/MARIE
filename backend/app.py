@@ -22,13 +22,26 @@ VERBINDUNGEN = """
 
 @app.route("/")
 def start():
-    return render_template("start.html", personen=run_query(PERSONEN))
+    return render_template("start.html", personen=run_query(PERSONEN), person_a="", person_b="")
 
 
 @app.route("/verbindungen")
 def verbindungen():
     person_a = request.args.get("person_a", "")
     person_b = request.args.get("person_b", "")
+    meldung = None
+    if not person_a or not person_b:
+        meldung = "Bitte wähle zwei Personen aus."
+    elif person_a == person_b:
+        meldung = "Bitte wähle zwei verschiedene Personen aus."
+    if meldung:
+        return render_template(
+            "start.html",
+            personen=run_query(PERSONEN),
+            person_a=person_a,
+            person_b=person_b,
+            meldung=meldung,
+        )
     beziehungen = run_query(VERBINDUNGEN, {"person_a": person_a, "person_b": person_b})
     return render_template(
         "verbindungen.html",
