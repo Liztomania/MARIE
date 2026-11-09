@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titel %}MARIE – {{ person_a }} und {{ person_b }}{% endblock %}
+{% block inhalt %}
+<header class="kopf">
+  <a class="logo logo--klein" href="{{ url_for('start') }}">
+    <span class="logo-wort">MARIE</span>
+    <span class="logo-unterzeile">Meeting Artists in Research<br>and Interdisciplinary Education</span>
+  </a>
+  {% with mit_zurueck=True, knopftext='Verbindungen aktualisieren' %}
+    {% include "_auswahl.html" %}
+  {% endwith %}
+</header>
+
+<main class="dashboard">
+  <section class="panel panel--netzwerk">
+    <h2>Netzwerk</h2>
+    {% if beziehungen %}
+    <table>
+      <tr><th>Von</th><th>Beziehung</th><th>Zu</th></tr>
+      {% for b in beziehungen %}
+      <tr><td>{{ b.von }}</td><td>{{ b.typ }}</td><td>{{ b.zu }}</td></tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p class="hinweis">Keine direkte Verbindung gefunden.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel panel--karte">
+    <h2>Orte</h2>
+    <p class="hinweis">Kartenansicht folgt.</p>
+  </section>
+
+  <section class="panel panel--werke">
+    <h2>Werke</h2>
+    <div class="werke">
+      <figure>
+        <img src="{{ url_for('static', filename='img/werke/CRW_Plastik_Paula_Modersohn-Becker.jpg') }}" alt="Bronzebüste von Paula Modersohn-Becker auf einem Granitsockel">
+        <figcaption>Clara Rilke-Westhoff: <i>Büste Paula Modersohn-Becker</i></figcaption>
+      </figure>
+      <figure>
+        <img src="{{ url_for('static', filename='img/werke/PMB_Gemaelde_Clara_Rilke-Westhoff.jpg') }}" alt="Gemälde: Clara Rilke-Westhoff in weißem Gewand mit einer roten Rose">
+        <figcaption>Paula Modersohn-Becker: <i>Bildnis Clara Rilke-Westhoff</i></figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+{% endblock %}
